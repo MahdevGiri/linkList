@@ -1,0 +1,8 @@
+//
+// Created by mahes on 6/27/2019.
+//
+
+#ifndef HASHASSIGNMENT_LINKED_H
+#define HASHASSIGNMENT_LINKED_H
+
+#endif //HASHASSIGNMENT_LINKED_H
