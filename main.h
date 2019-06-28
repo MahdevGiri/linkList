@@ -6,6 +6,7 @@
 #define HASHASSIGNMENT_MAIN_H
 
 #include <iostream>
+#include"linked.h"
 using namespace std;
 
 #endif //HASHASSIGNMENT_MAIN_H
