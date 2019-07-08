@@ -14,6 +14,7 @@ public:
     ~Linkedlist(){};
 
     bool addNode(int,string);
+    bool deleteNode(int);
     void printList(bool);
 
 private:

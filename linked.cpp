@@ -7,12 +7,9 @@ void addHead(Node** head,Node** temp,int* count)  //add head
         (*head)->back=*temp;
         (*head) =*temp;
     *count =*count +1;
-    cout<<"addAtBeginning function is called"<<endl;
-    cout<<"count "<<*count<<endl;
-
 }
 
-void addMiddle(Node** ptr,Node** temp,int* count)
+void addMiddle(Node** ptr,Node** temp,int* count)  // add middle
 {
     (*temp)->forward=*ptr;
     (*temp)->back=(*ptr)->back;
@@ -20,8 +17,6 @@ void addMiddle(Node** ptr,Node** temp,int* count)
     (*ptr)->back=*temp;
     (*temp)->back->forward=*temp;
     *count =*count +1;
-    cout<<"Middle function is called"<<endl;
-    cout<<"count "<<*count<<endl;
 }
 
 void addTail(Node** ptr,Node** temp,int* count)   //add tail
@@ -30,11 +25,6 @@ void addTail(Node** ptr,Node** temp,int* count)   //add tail
     (*ptr)->forward=*temp;
     (*temp)->back=*ptr;
     *count =*count +1;
-    cout<<"tail function is called"<<endl;
-    cout<<"count "<<*count<<endl;
-
-
-
 }
 
 Linkedlist::Linkedlist() {
@@ -53,12 +43,8 @@ bool Linkedlist::addNode(int id, string data) {
 
     if (head == nullptr)  //add head
     {
-
         head = temp;
         count = count + 1;
-        cout << "head function is called" << endl;
-        cout << "count: " << count << endl;
-
     }
     else        // if head is not null
     {
@@ -75,8 +61,8 @@ bool Linkedlist::addNode(int id, string data) {
         }
 
         else {  //add in middle
-            while (found != true && ptr->forward != nullptr &&done!=false) {
-                if (found == false && done==true) {
+            while (!found  && ptr->forward != nullptr &&done) {
+                if (!found && done) {
                     ptr = ptr->forward;
                 }
                 if(id ==(ptr)->id)  // if same element
@@ -90,7 +76,7 @@ bool Linkedlist::addNode(int id, string data) {
                 }
             }
 
-            if (found != true )         //add tail
+            if (!found )         //add tail
             {
                 addTail(&ptr, &temp, &count);
             }
@@ -106,13 +92,33 @@ bool Linkedlist::addNode(int id, string data) {
 
     void Linkedlist::printList(bool result)
     {
-
-        Node *ptr = head;
-        cout << "Printing the list: " << endl;
-        for (int i = 0; i < count && ptr != nullptr; i++) {
-            cout << ptr->id << ": " << ptr->data << endl;
-            ptr = ptr->forward;
-        }
+       if(result)
+       {
+           Node *ptr = head;
+           cout << "Printing the list: " << endl;
+           for (int i = 0; i < count && ptr != nullptr; i++) {
+               cout << ptr->id << ": " << ptr->data << endl;
+               ptr = ptr->forward;
+           }
+       }
+        else
+       {
+            cout<<"Error"<<endl;
+       }
 
     }
+
+bool Linkedlist::deleteNode(int) {
+    bool done =true;
+    if(head==nullptr)
+    {
+        done = false;   // empty list
+    }
+    else
+    {
+        Node *ptr = head;
+    }
+
+    return done;
+}
 
