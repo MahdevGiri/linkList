@@ -50,7 +50,7 @@ bool Linkedlist::addNode(int id, string data) {
     {
 
         Node *ptr = head;
-        bool found = false;
+        bool found = false;  // to break the loop if the case is found
         if (id < (ptr)->id )   // add head
         {
             addHead(&head, &temp, &count);
@@ -59,10 +59,12 @@ bool Linkedlist::addNode(int id, string data) {
         {
             done =false;
         }
-
-        else {  //add in middle
-            while (!found  && ptr->forward != nullptr &&done) {
-                if (!found && done) {
+        else       // // to add in middle or tail
+        {
+            while (!found  && ptr->forward != nullptr &&done)
+            {
+                if (!found && done)
+                {
                     ptr = ptr->forward;
                 }
                 if(id ==(ptr)->id)  // if same element
@@ -70,11 +72,12 @@ bool Linkedlist::addNode(int id, string data) {
                     found =true;
                     done =false;
                 }
-                else if (id < (ptr)->id) {
+                else if (id < (ptr)->id)  // add middle
+                {
                     found = true;
                     addMiddle(&ptr, &temp, &count);
                 }
-            }
+            }                   // end of while loop
 
             if (!found )         //add tail
             {
@@ -82,7 +85,7 @@ bool Linkedlist::addNode(int id, string data) {
             }
         }
 
-        }
+    }
 
     return done;
 
@@ -100,15 +103,15 @@ bool Linkedlist::addNode(int id, string data) {
                cout << ptr->id << ": " << ptr->data << endl;
                ptr = ptr->forward;
            }
+           cout<<"The count is: "<<count<<endl;
        }
         else
        {
             cout<<"Error"<<endl;
        }
-
     }
 
-bool Linkedlist::deleteNode(int) {
+bool Linkedlist::deleteNode(int id) {
     bool done =true;
     if(head==nullptr)
     {
@@ -117,6 +120,56 @@ bool Linkedlist::deleteNode(int) {
     else
     {
         Node *ptr = head;
+        if(ptr->forward==nullptr && ptr->back==nullptr&&id==ptr->id) // only one node
+        {
+            cout<<"only one node case"<<endl;
+            head =nullptr;
+            free(ptr);
+            count--;
+        }
+        else if(ptr->back==nullptr &&id==ptr->id&&ptr->forward!=nullptr) // deleting head when there is more than one node
+        {
+            cout<<"deleting head when there is more than one node"<<endl;
+            head = head->forward;
+            head->back=nullptr;
+            free(ptr);
+            count--;
+        }
+        else
+        {
+            Node* temp;
+            bool found = false;
+            while(!found && ptr->forward!=nullptr)
+            {
+
+                if(ptr->id==id)  //deleting middle
+                {
+                    cout<<"deleting middle "<<endl;
+                    found=true;
+                    ptr->back->forward=ptr->forward;
+                    ptr->forward->back=ptr->back;
+                    free(ptr);
+                    count--;
+                }
+                if (!found && done)
+                {
+                    ptr = ptr->forward;
+                }
+            }
+
+            if (!found &&ptr->id==id)         //deleting tail
+            {
+                cout<<"deleting tail"<<endl;
+                ptr->back->forward=nullptr;
+                free(ptr);
+                count--;
+            }
+            if(!found &&ptr->id!=id)
+            {
+                done =false;  // not found in any node
+            }
+        }
+
     }
 
     return done;
