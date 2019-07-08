@@ -20,6 +20,7 @@ private:
     Node* head;
     int count;
 
+
 };
 
 #endif //HASHASSIGNMENT_LINKED_H
