@@ -42,6 +42,20 @@ int main(int argc, char** argv)
     }
     cout << "Testing adding all test cases done" << endl << endl;
 
+    //try to add same thing
+    cout<<"try to add same thing again"<<endl;
+    for (int i = 0; i < num_tests; i++) {
+        if (list.addNode(ids[i],data[i])) {
+            cout << "\t" << i + 1 << ") " << ids[i] << ": " << data[i] << " added to list." << endl;
+        }
+        else {
+            cout << "\terror: something went wrong" << endl;
+        }
+    }
+    cout << "Testing adding all test cases done" << endl << endl;
+
+  //printing the list in both order and getting the count
+
     cout<<"printing the list in ascending order"<<endl;
     list.printList();
     cout<<"priting in decending  order"<<endl;
@@ -49,7 +63,33 @@ int main(int argc, char** argv)
     cout<<"Getting the count"<<endl;
     cout<<list.getCount()<<endl;
 
-    
+    //deleting all the test cases to the list
+    cout << "Tessting deleting all test cases to linkedlist" << endl;
+    for (int i = 0; i < num_tests; i++) {
+        cout<<"trying to delete the node with id: "<<ids[i]<<endl;
+        if (list.deleteNode(ids[i])) {
+            cout << "\t" << i + 1 << ") " << ids[i] << ": " << data[i] << " deleted to list." << endl;
+        }
+        else {
+            cout << "\terror: something went wrong" << endl;
+        }
+    }
+    cout << "Testing deleting all test cases done" << endl<<endl;
+
+    //deleting again
+    cout << "Tessting deleting all test cases to linkedlist" << endl;
+    for (int i = 0; i < num_tests; i++) {
+        cout<<"trying to delete the node with id: "<<ids[i]<<endl;
+        if (list.deleteNode(ids[i])) {
+            cout << "\t" << i + 1 << ") " << ids[i] << ": " << data[i] << " deleted to list." << endl;
+        }
+        else {
+            cout << "\terror: something went wrong" << endl;
+        }
+    }
+    cout << "Testing deleting all test cases done" << endl<<endl;
+
+
 
 
 }
