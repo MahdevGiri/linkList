@@ -14,4 +14,9 @@ struct Node {
     Node* forward;
     Node* back;
 };
+
+struct DataNode {
+    int id;
+    string data;
+};
 #endif //DATA_H

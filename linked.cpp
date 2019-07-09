@@ -6,7 +6,7 @@ Linkedlist::Linkedlist() {
 }
 
 Linkedlist::~Linkedlist() {
-    cout<<"I am destructor"<<endl;
+    cout<<"Destructor is called..."<<endl;
     clear();
 
 }
@@ -175,6 +175,40 @@ int Linkedlist::getCount() {
     return count;
 }
 
+bool Linkedlist::getNode(int id,DataNode* newNode) {
+    bool found=false;
+    Node* ptr = head;
+    while(ptr->forward!=nullptr&&!found)
+    {
+        if(ptr->id==id)
+        {
+            cout<<"found it not in tail though"<<endl;
+            found=true;
+            newNode->id=ptr->id;
+            newNode->data=ptr->data;
+        }
+        if (!found)
+        {
+            ptr = ptr->forward;
+        }
+    }
+    if(ptr->id==id && !found)  // found in tail
+    {
+        cout<<"found it (in tail)"<<endl;
+        found=true;
+        newNode->id=ptr->id;
+        newNode->data=ptr->data;
+    }
+    else if(!found)
+    {
+        cout<<"Not found"<<endl;
+        newNode->id =-1;
+        newNode->data=" ";
+    }
+    return found;
+}
+
+
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -245,6 +279,7 @@ void Linkedlist:: addTail(Node** ptr,Node** temp,int* count)   //add tail
     (*temp)->back=*ptr;
     *count =*count +1;
 }
+
 
 
 

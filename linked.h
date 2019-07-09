@@ -2,7 +2,7 @@
 #ifndef LINKED_H
 #define LINKED_H
 #include <iostream>
-#include "data.h"
+#include "data.h"  //to get struct Node
 using namespace std;
 //#define STACK_SIZE 10  ////////////////////////////////////////
 //#define INITIAL_POSITION -1 ////////////////////////////
@@ -19,6 +19,7 @@ public:
     void printList();   // calls the printList with bool value true
     int getCount();
     bool clear();
+    bool getNode(int,DataNode*);
 
 private:
     Node* head;
