@@ -6,7 +6,7 @@
 void make_test_cases(int *ids, char **data, int num_cases) {
 
     for (int i = 0; i < num_cases; i++) {
-        ids[i] = rand() % MAX_ID + MIN_ID;
+        ids[i] = rand() % MAX_ID  + MIN_ID;
         for (int j = 0; j < BUFFER_SIZE - 1; j++) {
             data[i][j] = 'a' + i;
         }
