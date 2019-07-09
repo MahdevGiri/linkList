@@ -10,12 +10,17 @@ int main()
     DataNode obj;
     Linkedlist list;
 list.addNode(10,"ram");
-list.addNode(15,"sam");
+//list.printList();
+list.addNode(5,"sam");
+    //list.printList();
 list.addNode(20,"tam");
-list.getNode(2,&obj);
+cout<<list.getCount()<<endl;
+//bool opt=list.deleteNode(10);
+//list.printList(opt);
+//list.getNode(2,&obj);
 
-cout<<obj.id<<endl;
-cout<<obj.data<<endl;
+//cout<<obj.id<<endl;
+//cout<<obj.data<<endl;
 
 
 }
