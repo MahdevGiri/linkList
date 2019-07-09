@@ -5,6 +5,37 @@ Linkedlist::Linkedlist() {
     count =0;
 }
 
+Linkedlist::~Linkedlist() {
+    cout<<"I am destructor"<<endl;
+    clear();
+
+}
+
+bool Linkedlist::clear() {
+    bool success = true;
+    if(count==0)
+    {
+        success = false;
+    }
+    else
+    {
+        Node *ptr = head;
+        while(ptr->forward!=nullptr)
+        {
+            ptr=ptr->forward;
+        }
+        while(ptr->back!=nullptr)
+        {
+
+            deleteTail(&ptr,&count);
+            ptr=ptr->back;
+        }
+        deleteHead(&head,&ptr,&count);
+    }
+    return success;
+}
+
+
 bool Linkedlist::addNode(int id, string data) {
 
    bool done = true;   // to find out if the method is successful
@@ -214,5 +245,8 @@ void Linkedlist:: addTail(Node** ptr,Node** temp,int* count)   //add tail
     (*temp)->back=*ptr;
     *count =*count +1;
 }
+
+
+
 
 

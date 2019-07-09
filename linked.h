@@ -11,13 +11,14 @@ using namespace std;
 class Linkedlist {
 public:
     Linkedlist();
-    ~Linkedlist(){};
+    ~Linkedlist();
 
     bool addNode(int,string);
     bool deleteNode(int);
     void printList(bool);
     void printList();   // calls the printList with bool value true
     int getCount();
+    bool clear();
 
 private:
     Node* head;
