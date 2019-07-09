@@ -16,6 +16,7 @@ public:
     bool addNode(int,string);
     bool deleteNode(int);
     void printList(bool);
+    void printList();   // calls the printList with bool value true
     int getCount();
 
 private:

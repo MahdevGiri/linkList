@@ -61,15 +61,12 @@ bool Linkedlist::addNode(int id, string data) {
         }
         else       // // to add in middle or tail
         {
-            while (!found  && ptr->forward != nullptr &&done)
+            while (!found  && ptr->forward != nullptr && done)
             {
-                if (!found && done)
-                {
-                    ptr = ptr->forward;
-                }
+
+                ptr = ptr->forward;
                 if(id ==(ptr)->id)  // if same element
                 {
-                    found =true;
                     done =false;
                 }
                 else if (id < (ptr)->id)  // add middle
@@ -91,24 +88,39 @@ bool Linkedlist::addNode(int id, string data) {
 
     }
 
+void Linkedlist::printList() {
+    printList(true);
+
+}
 
 
     void Linkedlist::printList(bool result)
     {
-       if(result)
+    if(!result)
        {
-           Node *ptr = head;
-           cout << "Printing the list: " << endl;
-           for (int i = 0; i < count && ptr != nullptr; i++) {
+        Node *ptr=head;
+            cout<<"Printing the list back: "<<endl;
+            while(ptr->forward!=nullptr)
+            {
+                ptr=ptr->forward;
+            }
+           for (int i = 0; i < count&& ptr->back != nullptr; i++) {
                cout << ptr->id << ": " << ptr->data << endl;
-               ptr = ptr->forward;
+               ptr = ptr->back;
            }
-           cout<<"The count is: "<<count<<endl;
+           cout << ptr->id << ": " << ptr->data << endl; // printing head
+
        }
-        else
-       {
-            cout<<"Error"<<endl;
-       }
+    else
+        {
+            Node *ptr = head;
+            cout << "Printing the list: " << endl;
+            for (int i = 0; i < count && ptr != nullptr; i++) {
+                cout << ptr->id << ": " << ptr->data << endl;
+                ptr = ptr->forward;
+            }
+            cout<<"The count is: "<<count<<endl;
+        }
     }
 
 bool Linkedlist::deleteNode(int id) {
@@ -137,7 +149,6 @@ bool Linkedlist::deleteNode(int id) {
         }
         else
         {
-            Node* temp;
             bool found = false;
             while(!found && ptr->forward!=nullptr)
             {
@@ -151,7 +162,7 @@ bool Linkedlist::deleteNode(int id) {
                     free(ptr);
                     count--;
                 }
-                if (!found && done)
+                if (!found)
                 {
                     ptr = ptr->forward;
                 }
@@ -178,4 +189,6 @@ bool Linkedlist::deleteNode(int id) {
 int Linkedlist::getCount() {
     return count;
 }
+
+
 

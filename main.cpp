@@ -7,8 +7,8 @@
 int main()
 {
     Linkedlist list;
-    bool opt = list.deleteNode(10);
-    list.printList(opt);
+   bool opt = list.deleteNode(10);
+   // list.printList(opt);
     bool option=list.addNode(10,"hari");
     list.printList(option);
     bool option2=list.addNode(50,"ram");
@@ -16,7 +16,7 @@ int main()
     bool option3=list.addNode(500,"r");
     list.printList(option3);
     bool option4 = list.deleteNode(10);
-    list.printList(option4);
+    list.printList(true);
    cout<<"the count is-> " <<list.getCount()<<endl;
 
 }
