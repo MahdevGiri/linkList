@@ -41,6 +41,17 @@ int main(int argc, char** argv) {
     cout << "Testing adding all test cases done" << endl << endl;
 
 
+
+
+    //printing the list in both order and getting the count
+
+    cout << "printing the list in ascending order" << endl;
+    list.printList();
+    cout << "priting in decending  order" << endl;
+    list.printList(false);
+    cout << "Getting the count" << endl;
+    cout << list.getCount() << endl;
+
     //get max and min id
     int max, min, middle;
     max = -1;
@@ -56,20 +67,65 @@ int main(int argc, char** argv) {
         }
 
     }
-    cout << "max" << max << endl;
-    cout << "min" << min << endl;
-    cout << "middle" << middle << endl;
 
-    //printing the list in both order and getting the count
+    // try to add same thing again
+    cout<<"try to add same thing"<<endl;
+    if (list.addNode(middle,"BBBBBBBBBBBBBBB")) {
+        cout << middle << " added to list." << endl;
+    } else {
+        cout << "\terror: something went wrong" << endl;
+    }
 
-    cout << "printing the list in ascending order" << endl;
-    list.printList();
-    cout << "priting in decending  order" << endl;
-    list.printList(false);
-    cout << "Getting the count" << endl;
-    cout << list.getCount() << endl;
+    // try to retrieve an existing id (first one)
+    cout<<"try to retrieve an existing id (first one)"<<endl;
+    if(list.getNode(min,&obj)){
+        cout << "retrieved: "<<endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }else {
+        cout << "\not retrieved:" << endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }
+    // try to retrieve an existing id (middle one)
+    cout<<"try to retrieve an existing id (middle one)"<<endl;
+    if(list.getNode(middle,&obj)){
+        cout << "retrieved: "<<endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }else {
+        cout << "\not retrieved:" << endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }
 
-    //deleting all the test cases to the list
+    // try to retrieve an existing id (last one)
+    cout<<"try to retrieve an existing id (last one)"<<endl;
+    if(list.getNode(max,&obj)){
+        cout << "retrieved: "<<endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }else {
+        cout << "\ not retrieved:" << endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }
+    // try to retrieve an non-existing id
+    cout<<"try to retrieve an non-existing id "<<endl;
+    if(list.getNode(-1,&obj)){
+        cout << "retrieved: "<<endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }else {
+        cout << "\not retrieved:" << endl;
+        cout<<"ID is: "<<obj.id<<endl;
+        cout<<"DATA is: "<<obj.data<<endl;
+    }
+
+
+
+
+    // Testing deleting all test cases to linkedlis
     cout << "Testing deleting all test cases to linkedlist" << endl;
 
     cout << "trying to delete the first node with id: " << min << endl;
@@ -100,8 +156,8 @@ int main(int argc, char** argv) {
         cout << "\terror: something went wrong" << endl;
     }
 
-    //deleting all the test cases to the list
-    cout << "Tessting deleting all test cases to linkedlist" << endl;
+    //try to delete when three node is already deleted
+    cout << "try to delete when three nodes are already deleted" << endl;
     for (int i = 0; i < num_tests; i++) {
         cout<<"trying to delete the node with id: "<<ids[i]<<endl;
         if (list.deleteNode(ids[i])) {
@@ -112,4 +168,8 @@ int main(int argc, char** argv) {
         }
     }
     cout << "Testing deleting all test cases done" << endl << endl;
+
+    // geting the count
+    cout << "Getting the count" << endl;
+    cout << list.getCount() << endl;
 }
