@@ -6,7 +6,7 @@
 #include <string>
 using std::string;
 
-//#define BUFFER_SIZE 16  //////////////////////////////////
+#define BUFFER_SIZE 11
 
 struct Node {
     int id;

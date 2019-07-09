@@ -4,9 +4,6 @@
 #include <iostream>
 #include "data.h"  //to get struct Node
 using namespace std;
-//#define STACK_SIZE 10  ////////////////////////////////////////
-//#define INITIAL_POSITION -1 ////////////////////////////
-//#define ONE 1               ////////////////////////////////
 
 class Linkedlist {
 public:
