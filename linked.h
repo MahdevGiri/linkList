@@ -23,6 +23,14 @@ private:
     Node* head;
     int count;
 
+    //  private helper function
+    void addHead(Node** head,Node** temp,int* count);
+    void addMiddle(Node** ptr,Node** temp,int* count);
+    void addTail(Node** ptr,Node** temp,int* count);
+    void deleteHead(Node** head,Node** ptr,int* count);
+    void deleteMiddle(Node** ptr,int* count);
+    void deleteTail(Node** ptr,int* count);
+
 
 };
 

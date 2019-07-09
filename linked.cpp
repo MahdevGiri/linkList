@@ -1,31 +1,6 @@
 #include "linked.h"
 
 
-void addHead(Node** head,Node** temp,int* count)  //add head
-{
-        (*temp)->forward=*head;
-        (*head)->back=*temp;
-        (*head) =*temp;
-    *count =*count +1;
-}
-
-void addMiddle(Node** ptr,Node** temp,int* count)  // add middle
-{
-    (*temp)->forward=*ptr;
-    (*temp)->back=(*ptr)->back;
-
-    (*ptr)->back=*temp;
-    (*temp)->back->forward=*temp;
-    *count =*count +1;
-}
-
-void addTail(Node** ptr,Node** temp,int* count)   //add tail
-{
-
-    (*ptr)->forward=*temp;
-    (*temp)->back=*ptr;
-    *count =*count +1;
-}
 
 Linkedlist::Linkedlist() {
     head = nullptr;
@@ -96,24 +71,23 @@ void Linkedlist::printList() {
 
     void Linkedlist::printList(bool result)
     {
+
+    Node *ptr=head;
     if(!result)
        {
-        Node *ptr=head;
-            cout<<"Printing the list back: "<<endl;
+        cout<<"Printing the list back: "<<endl;
             while(ptr->forward!=nullptr)
             {
                 ptr=ptr->forward;
             }
-           for (int i = 0; i < count&& ptr->back != nullptr; i++) {
+           for (int i = 0; i < count &&ptr!=nullptr ; i++) {
                cout << ptr->id << ": " << ptr->data << endl;
                ptr = ptr->back;
            }
-           cout << ptr->id << ": " << ptr->data << endl; // printing head
-
+           cout<<"The count is: "<<count<<endl;
        }
     else
         {
-            Node *ptr = head;
             cout << "Printing the list: " << endl;
             for (int i = 0; i < count && ptr != nullptr; i++) {
                 cout << ptr->id << ": " << ptr->data << endl;
@@ -132,20 +106,9 @@ bool Linkedlist::deleteNode(int id) {
     else
     {
         Node *ptr = head;
-        if(ptr->forward==nullptr && ptr->back==nullptr&&id==ptr->id) // only one node
+        if(ptr->back==nullptr &&id==ptr->id && (ptr->forward==nullptr||ptr->forward!=nullptr)) // deleting head when there is more than one node
         {
-            cout<<"only one node case"<<endl;
-            head =nullptr;
-            free(ptr);
-            count--;
-        }
-        else if(ptr->back==nullptr &&id==ptr->id&&ptr->forward!=nullptr) // deleting head when there is more than one node
-        {
-            cout<<"deleting head when there is more than one node"<<endl;
-            head = head->forward;
-            head->back=nullptr;
-            free(ptr);
-            count--;
+            deleteHead(&head,&ptr,&count);  // call deleteHead
         }
         else
         {
@@ -155,12 +118,8 @@ bool Linkedlist::deleteNode(int id) {
 
                 if(ptr->id==id)  //deleting middle
                 {
-                    cout<<"deleting middle "<<endl;
                     found=true;
-                    ptr->back->forward=ptr->forward;
-                    ptr->forward->back=ptr->back;
-                    free(ptr);
-                    count--;
+                    deleteMiddle(&ptr,&count);
                 }
                 if (!found)
                 {
@@ -170,12 +129,9 @@ bool Linkedlist::deleteNode(int id) {
 
             if (!found &&ptr->id==id)         //deleting tail
             {
-                cout<<"deleting tail"<<endl;
-                ptr->back->forward=nullptr;
-                free(ptr);
-                count--;
+                deleteTail(&ptr,&count);
             }
-            if(!found &&ptr->id!=id)
+            else if(!found &&ptr->id!=id)
             {
                 done =false;  // not found in any node
             }
@@ -190,5 +146,75 @@ int Linkedlist::getCount() {
     return count;
 }
 
+
+
+////////////////////////////////////////////////////////////////////////
+//PRIVATE HELPER FUNCTION
+///////////////////////////////////////////////////////////////////////
+
+void Linkedlist:: deleteHead(Node** head,Node** ptr,int* count)  //delete head
+{
+    if ((*ptr)->forward == nullptr)  // only one node
+    {
+        cout << "only one node case" << endl;
+        *head = nullptr;
+        free(*ptr);
+        *count = *count - 1;
+    } else    //more than one node
+    {
+        cout << "deleting head when there is more than one node" << endl;
+        *head = (*head)->forward;
+        (*head)->back = nullptr;
+        free(*ptr);
+        *count = *count - 1;
+    }
+}
+
+void Linkedlist::deleteMiddle(Node** ptr,int* count)  //delete middle
+{
+    cout<<"deleting middle "<<endl;
+
+    (*ptr)->back->forward=(*ptr)->forward;
+    (*ptr)->forward->back=(*ptr)->back;
+    free(*ptr);
+    *count=*count-1;
+
+}
+
+void Linkedlist::deleteTail(Node** ptr,int* count)  //delete tail
+{
+    cout<<"deleting tail "<<endl;
+    (*ptr)->back->forward=nullptr;
+    free(*ptr);
+    *count=*count-1;
+
+}
+
+
+void Linkedlist::addHead(Node** head,Node** temp,int* count)  //add head
+{
+    (*temp)->forward=*head;
+    (*head)->back=*temp;
+    (*head) =*temp;
+    *count =*count +1;
+}
+
+void Linkedlist::addMiddle(Node** ptr,Node** temp,int* count)  // add middle
+{
+    (*temp)->forward=*ptr;
+    (*temp)->back=(*ptr)->back;
+
+    (*ptr)->back=*temp;
+    (*temp)->back->forward=*temp;
+    *count =*count +1;
+}
+
+void Linkedlist:: addTail(Node** ptr,Node** temp,int* count)   //add tail
+{
+
+    (*ptr)->forward=*temp;
+    (*temp)->back=*ptr;
+    *count =*count +1;
+}
 
 
