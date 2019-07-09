@@ -17,5 +17,6 @@ int main()
     list.printList(option3);
     bool option4 = list.deleteNode(10);
     list.printList(option4);
+   cout<<"the count is-> " <<list.getCount()<<endl;
 
 }

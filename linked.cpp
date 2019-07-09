@@ -175,3 +175,7 @@ bool Linkedlist::deleteNode(int id) {
     return done;
 }
 
+int Linkedlist::getCount() {
+    return count;
+}
+

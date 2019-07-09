@@ -1,6 +1,6 @@
 
-#ifndef HASHASSIGNMENT_DATA_H
-#define HASHASSIGNMENT_DATA_H
+#ifndef DATA_H
+#define DATA_H
 
 
 #include <string>
@@ -14,4 +14,4 @@ struct Node {
     Node* forward;
     Node* back;
 };
-#endif //HASHASSIGNMENT_DATA_H
+#endif //DATA_H

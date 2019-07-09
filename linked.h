@@ -1,6 +1,6 @@
 
-#ifndef HASHASSIGNMENT_LINKED_H
-#define HASHASSIGNMENT_LINKED_H
+#ifndef LINKED_H
+#define LINKED_H
 #include <iostream>
 #include "data.h"
 using namespace std;
@@ -16,6 +16,7 @@ public:
     bool addNode(int,string);
     bool deleteNode(int);
     void printList(bool);
+    int getCount();
 
 private:
     Node* head;
@@ -24,4 +25,4 @@ private:
 
 };
 
-#endif //HASHASSIGNMENT_LINKED_H
+#endif //LINKED_H
