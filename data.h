@@ -1,7 +1,12 @@
+/***********************************************
+Name: Mahesh Giri
+Assignment: 03
+Purpose: This program will create a fully functional doubly linked list.It will demonstrate complete testing
+ and full functionality of the linked list.
+************************************************/
 
 #ifndef DATA_H
 #define DATA_H
-
 
 #include <string>
 using std::string;

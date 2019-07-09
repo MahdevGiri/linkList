@@ -1,6 +1,10 @@
-//
-// Created by mahes on 6/27/2019.
-//
+/***********************************************
+Name: Mahesh Giri
+Assignment: 03
+Purpose: This program will create a fully functional doubly linked list.It will demonstrate complete testing
+ and full functionality of the linked list.
+************************************************/
+
 #ifndef MAIN_H
 #define MAIN_H
 

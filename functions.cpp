@@ -1,6 +1,10 @@
-//
-// Created by mahes on 7/9/2019.
-//
+/***********************************************
+Name: Mahesh Giri
+Assignment: 03
+Purpose: This program will create a fully functional doubly linked list.It will demonstrate complete testing
+ and full functionality of the linked list.
+************************************************/
+
 #include "functions.h"
 
 void make_test_cases(int *ids, char **data, int num_cases) {
