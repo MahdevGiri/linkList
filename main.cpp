@@ -8,7 +8,7 @@ int main()
 {
     Linkedlist list;
    bool opt = list.deleteNode(10);
-   list.printList(true);
+   list.printList(false);
     bool option=list.addNode(10,"hari");
     list.printList(false);
    // bool option5 = list.deleteNode(10);
@@ -22,7 +22,7 @@ int main()
     bool option7 = list.deleteNode(10);
     list.printList(false);
     bool option8 = list.deleteNode(50);
-    list.printList(true);
+    list.printList(false);
 
 
 

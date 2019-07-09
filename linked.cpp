@@ -1,7 +1,5 @@
 #include "linked.h"
 
-
-
 Linkedlist::Linkedlist() {
     head = nullptr;
     count =0;
@@ -73,14 +71,14 @@ void Linkedlist::printList() {
     {
 
     Node *ptr=head;
-    if(!result)
+    if(!result &&ptr!=nullptr)
        {
         cout<<"Printing the list back: "<<endl;
             while(ptr->forward!=nullptr)
             {
                 ptr=ptr->forward;
             }
-           for (int i = 0; i < count &&ptr!=nullptr ; i++) {
+           for (int i = 0; i < count ; i++) {
                cout << ptr->id << ": " << ptr->data << endl;
                ptr = ptr->back;
            }
