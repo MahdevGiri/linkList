@@ -9,12 +9,12 @@ Purpose: This program will create a fully functional doubly linked list.It will 
 #define FUNCTIONS_H
 
 #include <iostream>   /* cout, endl */
-#include <cstdlib>   /* srand, rand */
-#include <ctime>     /* time */
+#include <stdio.h>   /* srand, rand */
+#include <time.h>     /* time */
 #include "data.h"
 
-#define MAX_ID 9999;
-#define MIN_ID 1000;
+#define MAX_ID 9999
+#define MIN_ID 1000
 
 using std::cout;
 using std::endl;

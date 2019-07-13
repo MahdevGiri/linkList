@@ -183,33 +183,45 @@ int Linkedlist::getCount() {
 }
 
 bool Linkedlist::getNode(int id,DataNode* newNode) {
-    bool found=false;
-    Node* ptr = head;
-    while(ptr->forward!=nullptr&&!found) //traverse until it finds the match or reach the tail
+    bool done=true;
+    if(head==nullptr)
     {
-        if(ptr->id==id)
+        newNode->id =-1;
+        newNode->data=" ";
+        done = false;   // empty list
+    }
+    else
+    {
+        bool found=false;
+        Node* ptr = head;
+        while(ptr->forward!=nullptr&&!found) //traverse until it finds the match or reach the tail
+        {
+            if(ptr->id==id)
+            {
+                found=true;
+                newNode->id=ptr->id;
+                newNode->data=ptr->data;
+            }
+            if (!found)
+            {
+                ptr = ptr->forward;
+            }
+        }
+        if(ptr->id==id && !found)  // id matched with tail
         {
             found=true;
             newNode->id=ptr->id;
             newNode->data=ptr->data;
         }
-        if (!found)
+        else if(!found)  // not matched with any node(not found in tail too)
         {
-            ptr = ptr->forward;
+            newNode->id =-1;
+            newNode->data=" ";
+            done =false;
         }
     }
-    if(ptr->id==id && !found)  // id matched with tail
-    {
-        found=true;
-        newNode->id=ptr->id;
-        newNode->data=ptr->data;
-    }
-    else if(!found)  // not matched with any node(not found in tail too)
-    {
-        newNode->id =-1;
-        newNode->data=" ";
-    }
-    return found;
+
+    return done;
 }
 
 
